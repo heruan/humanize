@@ -26,7 +26,9 @@ import to.lova.humanize.time.HumanizeTime;
 
 public class TimeUnitTest {
 
-    private static final Temporal NOW = ZonedDateTime.now();
+    private static final String REFERENCE_TIME = "2007-12-03T10:15:30+01:00[Europe/Paris]";
+
+    private static final Temporal NOW = ZonedDateTime.parse(REFERENCE_TIME);
 
     @Test
     public void testStaticMethods() {

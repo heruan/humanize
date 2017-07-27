@@ -10,7 +10,7 @@
 
     <parent>
         <groupId>to.lova.humanize</groupId>
-        <version>0.1.1</version>
+        <version>0.1.2</version>
         <artifactId>humanize-parent</artifactId>
     </parent>
 

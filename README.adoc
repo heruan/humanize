@@ -10,9 +10,34 @@ image:https://img.shields.io/github/license/heruan/humanize.svg[link=http://www.
 
 image:https://img.shields.io/maven-central/v/to.lova.humanize/humanize-time.svg[title=humanize-time]
 
+Add the dependency to your `pom.xml`:
+
+[source,xml]
+----
+<dependency>
+    <groupdId>to.lova.humanize</groupId>
+    <artifactId>humanize-time</artifactId>
+    <version>0.1.1</version>
+</dependency>
+----
+
+Use it in your code as simple as:
+
 [source,java]
 ----
 Temporal minutesAgo = ZonedDateTime.now().minus(5, ChronoUnit.MINUTES);
 String relative = HumanizeTime.fromNow(minutesAgo);
 // produces: "5 minutes ago"
+----
+
+By default it uses the locale provided by `Locale.getDefault()`, but you can request a different one or provide your own resolver:
+
+[source,java]
+----
+Temporal minutesAgo = ZonedDateTime.now().minus(5, ChronoUnit.MINUTES);
+Locale.setDefault(Locale.ITALIAN);
+String italian = HumanizeTime.fromNow(temporal);
+// produces: "5 minuti fa"
+String english = HumanizeTime.fromNow(temporal, Locale.FRENCH);
+// produces: "5 minutes"
 ----
