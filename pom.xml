@@ -9,7 +9,9 @@
 
     <packaging>pom</packaging>
 
+    <name>Humanize</name>
     <description>Humanization libraries for Java</description>
+    <url>https://github.com/heruan/humanize</url>
 
     <licenses>
         <license>
@@ -26,10 +28,27 @@
         </developer>
     </developers>
 
+    <scm>
+        <connection>scm:git:git://github.com/heruan/humanize.git</connection>
+        <developerConnection>scm:git:git://github.com/heruan/humanize.git</developerConnection>
+        <url>https://github.com/heruan/humanize</url>
+    </scm>
+
     <issueManagement>
         <system>GitHub</system>
         <url>https://github.com/heruan/humanize/issues</url>
     </issueManagement>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
 
     <modules>
         <module>humanize-time</module>
@@ -41,8 +60,10 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.javadoc.version>2.10.4</maven.javadoc.version>
         <maven.source.version>3.0.1</maven.source.version>
+        <maven.gpg.version>1.6</maven.gpg.version>
         <jacoco.version>0.7.9</jacoco.version>
         <junit.version>4.12</junit.version>
+        <nexus.staging.version>1.6.8</nexus.staging.version>
     </properties>
 
     <dependencies>
@@ -84,7 +105,21 @@
                     <execution>
                         <id>attach-sources</id>
                         <goals>
-                            <goal>jar</goal>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>${maven.gpg.version}</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
                         </goals>
                     </execution>
                 </executions>
@@ -107,6 +142,17 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>${nexus.staging.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>ossrh</serverId>
+                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                </configuration>
             </plugin>
         </plugins>
     </build>
