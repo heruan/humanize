@@ -1,0 +1,10 @@
+= Humanization libraries for Java
+
+== humanize-time
+
+[source,java]
+----
+Temporal minutesAgo = ZonedDateTime.now().minus(5, ChronoUnit.MINUTES);
+String relative = HumanizeTime.fromNow(minutesAgo);
+// produces: "5 minutes ago"
+----
