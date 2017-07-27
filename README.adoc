@@ -1,4 +1,5 @@
-image:https://circleci.com/gh/heruan/humanize.png[link=https://circleci.com/gh/heruan/humanize,title=CricleCI]
+image:https://img.shields.io/circleci/project/github/heruan/humanize.svg[link=https://circleci.com/gh/heruan/humanize,title=CricleCI]
+image:https://img.shields.io/codecov/c/github/heruan/humanize.svg[link=https://codecov.io/gh/heruan/humanize,title=Codecov]
 
 = Humanization libraries for Java
 
