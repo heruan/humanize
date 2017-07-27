@@ -151,19 +151,19 @@ public class HumanizeTime implements LocaleResolver {
             } else if (seconds > 0) {
                 return this.messages.secondsAgo(seconds);
             } else if (years < 0) {
-                return this.messages.yearsWithin(-years + 1);
+                return this.messages.yearsWithin(-years);
             } else if (months < 0) {
-                return this.messages.monthsWithin(-months + 1);
+                return this.messages.monthsWithin(-months);
             } else if (weeks < 0) {
-                return this.messages.weeksWithin(-weeks + 1);
+                return this.messages.weeksWithin(-weeks);
             } else if (days < 0) {
-                return this.messages.daysWithin(-days + 1);
+                return this.messages.daysWithin(-days);
             } else if (hours < 0) {
-                return this.messages.hoursWithin(-hours + 1);
+                return this.messages.hoursWithin(-hours);
             } else if (minutes < 0) {
-                return this.messages.minutesWithin(-minutes + 1);
+                return this.messages.minutesWithin(-minutes);
             } else if (seconds < 0) {
-                return this.messages.secondsWithin(-seconds + 1);
+                return this.messages.secondsWithin(-seconds);
             } else {
                 return this.messages.now();
             }

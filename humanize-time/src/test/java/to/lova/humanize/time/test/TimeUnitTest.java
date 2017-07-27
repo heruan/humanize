@@ -17,6 +17,7 @@ package to.lova.humanize.time.test;
 
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
+import java.time.temporal.Temporal;
 import java.util.Locale;
 
 import org.junit.Assert;
@@ -25,102 +26,123 @@ import to.lova.humanize.time.HumanizeTime;
 
 public class TimeUnitTest {
 
-    private static final ZonedDateTime NOW = ZonedDateTime.now();
+    private static final Temporal NOW = ZonedDateTime.now();
+
+    @Test
+    public void testStaticMethods() {
+        HumanizeTime.fromNow(NOW);
+        HumanizeTime.fromNow(NOW, Locale.ENGLISH);
+        HumanizeTime.fromNow(NOW, Locale::getDefault);
+    }
+
+    @Test
+    public void testConstructors() {
+        new HumanizeTime();
+        new HumanizeTime(NOW);
+        new HumanizeTime(NOW, Locale.ENGLISH);
+        new HumanizeTime(NOW, Locale::getDefault);
+    }
 
     @Test
     public void testNow() {
-        String now = HumanizeTime.fromNow(NOW, Locale.ENGLISH);
+        String now = new HumanizeTime(NOW, Locale.ENGLISH).from(NOW);
         Assert.assertEquals("now", now);
     }
 
     @Test
     public void testSecondsAgo() {
-        String actual = HumanizeTime.fromNow(NOW.minus(2, ChronoUnit.SECONDS), Locale.ENGLISH);
+        String actual = new HumanizeTime(NOW.minus(2, ChronoUnit.SECONDS), Locale.ENGLISH).from(NOW);
         Assert.assertEquals("2 seconds ago", actual);
     }
 
     @Test
     public void testMinutesAgo() {
-        String actual = HumanizeTime.fromNow(NOW.minus(2, ChronoUnit.MINUTES), Locale.ENGLISH);
+        String actual = new HumanizeTime(NOW.minus(2, ChronoUnit.MINUTES), Locale.ENGLISH).from(NOW);
         Assert.assertEquals("2 minutes ago", actual);
     }
 
     @Test
     public void testHoursAgo() {
-        String actual = HumanizeTime.fromNow(NOW.minus(2, ChronoUnit.HOURS), Locale.ENGLISH);
+        String actual = new HumanizeTime(NOW.minus(2, ChronoUnit.HOURS), Locale.ENGLISH).from(NOW);
         Assert.assertEquals("2 hours ago", actual);
     }
 
     @Test
     public void testDaysAgo() {
-        String actual = HumanizeTime.fromNow(NOW.minus(2, ChronoUnit.DAYS), Locale.ENGLISH);
+        String actual = new HumanizeTime(NOW.minus(2, ChronoUnit.DAYS), Locale.ENGLISH).from(NOW);
         Assert.assertEquals("2 days ago", actual);
     }
 
     @Test
     public void testWeeksAgo() {
-        String actual = HumanizeTime.fromNow(NOW.minus(2, ChronoUnit.WEEKS), Locale.ENGLISH);
+        String actual = new HumanizeTime(NOW.minus(2, ChronoUnit.WEEKS), Locale.ENGLISH).from(NOW);
         Assert.assertEquals("2 weeks ago", actual);
     }
 
     @Test
     public void testMonthsAgo() {
-        String actual = HumanizeTime.fromNow(NOW.minus(2, ChronoUnit.MONTHS), Locale.ENGLISH);
+        String actual = new HumanizeTime(NOW.minus(2, ChronoUnit.MONTHS), Locale.ENGLISH).from(NOW);
         Assert.assertEquals("2 months ago", actual);
     }
 
     @Test
     public void testYearsAgo() {
-        String actual = HumanizeTime.fromNow(NOW.minus(2, ChronoUnit.YEARS), Locale.ENGLISH);
+        String actual = new HumanizeTime(NOW.minus(2, ChronoUnit.YEARS), Locale.ENGLISH).from(NOW);
         Assert.assertEquals("2 years ago", actual);
     }
 
     @Test
     public void testSecondsWithin() {
-        String actual = HumanizeTime.fromNow(NOW.plus(2, ChronoUnit.SECONDS), Locale.ENGLISH);
+        String actual = new HumanizeTime(NOW.plus(2, ChronoUnit.SECONDS), Locale.ENGLISH).from(NOW);
         Assert.assertEquals("within 2 seconds", actual);
     }
 
     @Test
     public void testMinutesWithin() {
-        String actual = HumanizeTime.fromNow(NOW.plus(2, ChronoUnit.MINUTES), Locale.ENGLISH);
+        String actual = new HumanizeTime(NOW.plus(2, ChronoUnit.MINUTES), Locale.ENGLISH).from(NOW);
         Assert.assertEquals("in 2 minutes", actual);
     }
 
     @Test
     public void testHoursWithin() {
-        String actual = HumanizeTime.fromNow(NOW.plus(2, ChronoUnit.HOURS), Locale.ENGLISH);
+        String actual = new HumanizeTime(NOW.plus(2, ChronoUnit.HOURS), Locale.ENGLISH).from(NOW);
         Assert.assertEquals("within 2 hours", actual);
     }
 
     @Test
     public void testDaysWithin() {
-        String actual = HumanizeTime.fromNow(NOW.plus(2, ChronoUnit.DAYS), Locale.ENGLISH);
+        String actual = new HumanizeTime(NOW.plus(2, ChronoUnit.DAYS), Locale.ENGLISH).from(NOW);
         Assert.assertEquals("in 2 days", actual);
     }
 
     @Test
     public void testWeeksWithin() {
-        String actual = HumanizeTime.fromNow(NOW.plus(2, ChronoUnit.WEEKS), Locale.ENGLISH);
+        String actual = new HumanizeTime(NOW.plus(2, ChronoUnit.WEEKS), Locale.ENGLISH).from(NOW);
         Assert.assertEquals("within 2 weeks", actual);
     }
 
     @Test
     public void testMonthsWithin() {
-        String actual = HumanizeTime.fromNow(NOW.plus(2, ChronoUnit.MONTHS), Locale.ENGLISH);
+        String actual = new HumanizeTime(NOW.plus(2, ChronoUnit.MONTHS), Locale.ENGLISH).from(NOW);
         Assert.assertEquals("in 2 months", actual);
     }
 
     @Test
     public void testYearsWithin() {
-        String actual = HumanizeTime.fromNow(NOW.plus(2, ChronoUnit.YEARS), Locale.ENGLISH);
+        String actual = new HumanizeTime(NOW.plus(2, ChronoUnit.YEARS), Locale.ENGLISH).from(NOW);
         Assert.assertEquals("in 2 years", actual);
     }
 
     @Test
     public void testMissingLocale() {
-        String actual = HumanizeTime.fromNow(NOW, Locale.forLanguageTag("xx"));
+        String actual = new HumanizeTime(NOW, Locale.forLanguageTag("xx")).from(NOW);
         Assert.assertEquals("now", actual);
+    }
+
+    @Test
+    public void testGetLocale() {
+        Locale actual = new HumanizeTime(NOW, Locale.ENGLISH).getLocale();
+        Assert.assertEquals(Locale.ENGLISH, actual);
     }
 
 }

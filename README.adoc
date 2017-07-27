@@ -1,4 +1,5 @@
 = Humanization libraries for Java
+
 image:https://img.shields.io/github/release/heruan/humanize.svg[link=https://github.com/heruan/humanize/releases,title=Latest release]
 image:https://img.shields.io/github/downloads/heruan/humanize/total.svg[link=https://github.com/heruan/humanize/archive/master.zip,title=GitHub]
 image:https://img.shields.io/circleci/project/github/heruan/humanize.svg[link=https://circleci.com/gh/heruan/humanize,title=CricleCI]
@@ -6,6 +7,7 @@ image:https://img.shields.io/codecov/c/github/heruan/humanize.svg[link=https://c
 image:https://img.shields.io/github/license/heruan/humanize.svg[link=http://www.apache.org/licenses/LICENSE-2.0.html,title=Apache License 2.0]
 
 == humanize-time
+
 image:https://img.shields.io/maven-central/v/to.lova.humanize/humanize-time.svg[title=humanize-time]
 
 [source,java]
