@@ -1,3 +1,5 @@
+image:https://circleci.com/gh/heruan/humanize.png[link=https://circleci.com/gh/heruan/humanize,title=CricleCI]
+
 = Humanization libraries for Java
 
 == humanize-time
