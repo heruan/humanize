@@ -17,7 +17,7 @@ Add the dependency to your `pom.xml`:
 <dependency>
     <groupdId>to.lova.humanize</groupId>
     <artifactId>humanize-time</artifactId>
-    <version>0.1.1</version>
+    <version>0.1.2</version>
 </dependency>
 ----
 
@@ -38,6 +38,8 @@ Temporal minutesAgo = ZonedDateTime.now().minus(5, ChronoUnit.MINUTES);
 Locale.setDefault(Locale.ITALIAN);
 String italian = HumanizeTime.fromNow(temporal);
 // produces: "5 minuti fa"
-String english = HumanizeTime.fromNow(temporal, Locale.FRENCH);
-// produces: "5 minutes"
+String french = HumanizeTime.fromNow(temporal, Locale.FRENCH);
+// produces: "il y a 5 minutes"
+String japanese = HumanizeTime.fromNow(temporal, () -> Locale.JAPANESE);
+// produces: "5時間前"
 ----
