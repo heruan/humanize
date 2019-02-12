@@ -15,7 +15,7 @@ Add the dependency to your `pom.xml`:
 [source,xml]
 ----
 <dependency>
-    <groupdId>to.lova.humanize</groupId>
+    <groupId>to.lova.humanize</groupId>
     <artifactId>humanize-time</artifactId>
     <version>0.1.2</version>
 </dependency>
