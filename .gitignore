@@ -20,6 +20,9 @@ buildNumber.properties
 .project
 .settings/
 
+# Intellij Idea
+.idea/
+
 # Misc
 .factorypath
 .checkstyle
