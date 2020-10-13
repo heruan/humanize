@@ -62,7 +62,7 @@
         <maven.source.version>3.0.1</maven.source.version>
         <maven.gpg.version>1.6</maven.gpg.version>
         <jacoco.version>0.7.9</jacoco.version>
-        <junit.version>4.12</junit.version>
+        <junit.version>4.13.1</junit.version>
         <nexus.staging.version>1.6.8</nexus.staging.version>
     </properties>
 
